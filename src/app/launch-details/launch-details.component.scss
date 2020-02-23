@@ -1,0 +1,34 @@
+.photo-grid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
+  }
+
+.photo-frame {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.photo {
+    transform: scale(1);
+    opacity: 1;
+    transition: all 250ms ease-in-out;
+}
+
+.photo:hover {
+    transform: scale(1.1);
+    opacity: .7;
+    transition: all 100ms ease-in-out;
+}
+
+.back-button {
+    color: white;
+    height: 50px; 
+    width: 50px; 
+    position: absolute;
+    border-radius: 50%;
+}
