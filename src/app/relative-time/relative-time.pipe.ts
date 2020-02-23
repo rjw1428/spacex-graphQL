@@ -13,12 +13,12 @@ export class RelativeTimePipe implements PipeTransform {
     const diffInMillicseconds =
       new Date(utcTime).getTime() - new Date().getTime();
     const diffInDays = Math.round(diffInMillicseconds / milliSecondsInDay);
-    // console.log(diffInDays)
-    // if (diffInDays <= -365) {
-    //   const diffInYears = Math.floor(-1*diffInDays / daysInYear)
-    //   const daysOverYear = diffInDays - diffInYears*daysInYear
-    //   return `${diffInYears} years and ${-1*daysOverYear} days ago`
-    // }
+    if (diffInDays <= -365) {
+      const diffInYears = Math.floor(-1*diffInDays / daysInYear)
+      const daysOverYear = -1*diffInDays - diffInYears*daysInYear
+      const yearLabel=diffInYears>1?"years":"year"
+      return `${diffInYears} ${yearLabel} and ${daysOverYear} days ago`
+    }
     return rtf.format(diffInDays, 'day');
   }
 

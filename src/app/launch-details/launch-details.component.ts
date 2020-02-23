@@ -27,6 +27,7 @@ export class LaunchDetailsComponent implements OnInit {
   );
 
   ngOnInit() {
+    //NOTE: AFTER ADDING GRAPHQL PARAMETERS, RUN npm run codegen TO REBUILD THE NECESSARY QUERY CODE
     // this.launchDetails$.subscribe(val=>console.log(val))
   }
 
