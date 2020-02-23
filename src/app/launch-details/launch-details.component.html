@@ -16,7 +16,8 @@
             alt="Mission patch of {{ launchDetails.mission_name }}" />
       </div>
       <mat-card-content>
-        <p>{{ launchDetails.details }}</p>
+        <p class="mt-3">{{ launchDetails.details }}</p>
+        <p class="text-right">{{ launchDetails.launch_date_local | date : short}}</p>
       </mat-card-content>
     </mat-card>
   </section>

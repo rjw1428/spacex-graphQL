@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./launch-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LaunchDetailsComponent {
+export class LaunchDetailsComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private router: Router,
@@ -25,6 +25,10 @@ export class LaunchDetailsComponent {
     switchMap((id) => this.launchDetailsService.fetch({ id })),
     map((res) => res.data.launch)
   );
+
+  ngOnInit() {
+    // this.launchDetails$.subscribe(val=>console.log(val))
+  }
 
   onBack() {
     this.router.navigate(["/"])

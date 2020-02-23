@@ -11,12 +11,14 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RelativeTimePipe } from './relative-time/relative-time.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     LaunchListComponent,
     LaunchDetailsComponent,
-    ImagePopupComponent
+    ImagePopupComponent,
+    RelativeTimePipe
   ],
   imports: [
     BrowserModule,

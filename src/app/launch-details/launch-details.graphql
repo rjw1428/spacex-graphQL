@@ -7,5 +7,6 @@ query launchDetails($id: ID!) {
       flickr_images
       mission_patch
     }
+    launch_date_local
   }
 }
