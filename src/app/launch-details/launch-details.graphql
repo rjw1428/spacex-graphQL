@@ -8,5 +8,11 @@ query launchDetails($id: ID!) {
       mission_patch
     }
     launch_date_local
+    rocket {
+      rocket_name
+      rocket {
+        id
+      }
+    }
   }
 }

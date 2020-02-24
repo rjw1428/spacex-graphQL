@@ -1,0 +1,21 @@
+query rocketDetails($id: ID!) {
+  rocket(id: $id) {
+    active
+    boosters
+    engines {
+      layout
+      thrust_to_weight
+    }
+    diameter {
+      feet
+    }
+    height {
+      feet
+    }
+    stages
+    name
+    mass {
+      lb
+    }
+  }
+}

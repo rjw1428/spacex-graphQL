@@ -1,0 +1,18 @@
+<ng-container *ngIf="rocketDetails$ | async as rocketDetails">
+  <section style="padding-top: 20px;">
+    <h3>{{rocketDetails.name}}</h3>
+    <div class="row">
+      <div class="col-6">
+        <p>HEIGHT: {{rocketDetails.height.feet}} ft</p>
+        <p>DIAMETER: {{rocketDetails.diameter.feet}} ft</p>
+        <p>WEIGHT: {{rocketDetails.mass.lb}} lb</p>
+        <p>ENGINES: {{rocketDetails.engines.layout}}</p>
+      </div>
+      <div class="col-6">
+        <p>STAGES: {{rocketDetails.stages}}</p>
+        <p>BOOSTERS: {{rocketDetails.boosters}}</p>
+        <p>THRUST TO WEIGHT: {{rocketDetails.engines.thrust_to_weight}}</p>
+      </div>
+    </div>
+  </section>
+</ng-container>

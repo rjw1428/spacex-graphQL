@@ -12,13 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImagePopupComponent } from './image-popup/image-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RelativeTimePipe } from './relative-time/relative-time.pipe';
+import { RocketPopupComponent } from './rocket-popup/rocket-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
     LaunchListComponent,
     LaunchDetailsComponent,
     ImagePopupComponent,
-    RelativeTimePipe
+    RelativeTimePipe,
+    RocketPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,9 @@ import { RelativeTimePipe } from './relative-time/relative-time.pipe';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ImagePopupComponent]
+  entryComponents: [
+    ImagePopupComponent, 
+    RocketPopupComponent
+  ]
 })
 export class AppModule { }

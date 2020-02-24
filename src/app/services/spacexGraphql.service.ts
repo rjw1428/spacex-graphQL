@@ -1276,10 +1276,17 @@ export type LaunchDetailsQuery = (
   { __typename?: 'Query' }
   & { launch: Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'id' | 'mission_name' | 'details' | 'launch_date_local' | 'launch_date_utc'>
+    & Pick<Launch, 'id' | 'mission_name' | 'details' | 'launch_date_local'>
     & { links: Maybe<(
       { __typename?: 'LaunchLinks' }
       & Pick<LaunchLinks, 'flickr_images' | 'mission_patch'>
+    )>, rocket: Maybe<(
+      { __typename?: 'LaunchRocket' }
+      & Pick<LaunchRocket, 'rocket_name'>
+      & { rocket: Maybe<(
+        { __typename?: 'Rocket' }
+        & Pick<Rocket, 'id'>
+      )> }
     )> }
   )> }
 );
@@ -1304,6 +1311,32 @@ export type PastLaunchesListQuery = (
   )>>> }
 );
 
+export type RocketDetailsQueryVariables = {
+  id: Scalars['ID']
+};
+
+
+export type RocketDetailsQuery = (
+  { __typename?: 'Query' }
+  & { rocket: Maybe<(
+    { __typename?: 'Rocket' }
+    & Pick<Rocket, 'active' | 'boosters' | 'stages' | 'name'>
+    & { engines: Maybe<(
+      { __typename?: 'RocketEngines' }
+      & Pick<RocketEngines, 'layout' | 'thrust_to_weight'>
+    )>, diameter: Maybe<(
+      { __typename?: 'Distance' }
+      & Pick<Distance, 'feet'>
+    )>, height: Maybe<(
+      { __typename?: 'Distance' }
+      & Pick<Distance, 'feet'>
+    )>, mass: Maybe<(
+      { __typename?: 'Mass' }
+      & Pick<Mass, 'lb'>
+    )> }
+  )> }
+);
+
 export const LaunchDetailsDocument = gql`
     query launchDetails($id: ID!) {
   launch(id: $id) {
@@ -1315,7 +1348,12 @@ export const LaunchDetailsDocument = gql`
       mission_patch
     }
     launch_date_local
-    launch_date_utc
+    rocket {
+      rocket_name
+      rocket {
+        id
+      }
+    }
   }
 }
     `;
@@ -1349,5 +1387,36 @@ export const PastLaunchesListDocument = gql`
   })
   export class PastLaunchesListGQL extends Apollo.Query<PastLaunchesListQuery, PastLaunchesListQueryVariables> {
     document = PastLaunchesListDocument;
+    
+  }
+export const RocketDetailsDocument = gql`
+    query rocketDetails($id: ID!) {
+  rocket(id: $id) {
+    active
+    boosters
+    engines {
+      layout
+      thrust_to_weight
+    }
+    diameter {
+      feet
+    }
+    height {
+      feet
+    }
+    stages
+    name
+    mass {
+      lb
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class RocketDetailsGQL extends Apollo.Query<RocketDetailsQuery, RocketDetailsQueryVariables> {
+    document = RocketDetailsDocument;
     
   }

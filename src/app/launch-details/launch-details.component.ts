@@ -4,6 +4,7 @@ import { LaunchDetailsGQL } from '../services/spacexGraphql.service';
 import { map, switchMap } from 'rxjs/operators';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RocketPopupComponent } from '../rocket-popup/rocket-popup.component';
 
 
 @Component({
@@ -39,6 +40,13 @@ export class LaunchDetailsComponent implements OnInit {
     this.dialog.open(ImagePopupComponent, {
       width: '85vw',
       data: imageLink
+    });
+  }
+
+  onRocketInfo(launchDetails: any) {
+    this.dialog.open(RocketPopupComponent, {
+      width: '50vw',
+      data: launchDetails.rocket.rocket.id
     });
   }
 }
